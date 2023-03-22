@@ -8,6 +8,7 @@ import { faker } from "@faker-js/faker";
 beforeEach("visit the app ", () => {
     const orgData = {
         orgName: faker.name.firstName(),
+        boardName: faker.name.firstName(),
     };
     cy.visit("/");
     loginPage.login("Miroslav023@gmail.com", "Miroslav023");
@@ -15,7 +16,7 @@ beforeEach("visit the app ", () => {
     addOrganization.fillData(orgData.orgName);
     cy.wait(2000)
     addOrganization.okButton.click();
-    addBoard.fillboardData(orgData.orgName);
+    addBoard.fillboardData(orgData.boardName);
     cy.url().should("include", "/boards");
     cy.wait(1000);
 
